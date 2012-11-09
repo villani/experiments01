@@ -33,6 +33,8 @@ public class Caracteristicas {
 	private static File folder;
 	private static File[] imagens;
 	private static String dataset;
+	private static String csv;
+	private static String txt;
 	private static int images;
 	private static int keypoints;
 	private static int histoSize;
@@ -45,6 +47,8 @@ public class Caracteristicas {
 		Caracteristicas.entradas = entradas;
 		folder = new File(Caracteristicas.entradas.get("folder"));
 		dataset = Caracteristicas.entradas.get("dataset");
+		csv = Caracteristicas.entradas.get("csv");
+		txt = Caracteristicas.entradas.get("txt");
 		images = Integer.parseInt(Caracteristicas.entradas.get("images"));
 		keypoints = Integer.parseInt(Caracteristicas.entradas.get("keypoints"));
 		histoSize = Integer.parseInt(Caracteristicas.entradas.get("histoSize"));
@@ -76,6 +80,7 @@ public class Caracteristicas {
 				saver.setFile(datasetAux);
 			} catch (IOException e) {
 				log.write("- Falha ao manipular o arquivo " + datasetAux.getAbsolutePath() + ". Erro: " + e.getMessage());
+				System.exit(0);
 			}
 			saver.setStructure(instancias);
 			saver.setRetrieval(ArffSaver.INCREMENTAL);
@@ -103,24 +108,48 @@ public class Caracteristicas {
 						saver.writeIncremental(instancia);
 					} catch (IOException e) {
 						log.write("- Falha ao salvar a instancia no conjunto auxiliar " + datasetAux.getAbsolutePath() + ". Erro: " + e.getMessage());
+						System.exit(0);
 					}
-					rotulosAuxiliar.add(imagem.getPath());
+					rotulosAuxiliar.add(imagem.getName());
 					qtdePontosChave++;
 				}
 				qtdeImagens++;
 			}
 			saver.writeIncremental(null);
 			
-			log.write("- Salvando em arquivo a lista de rótulos do conjunto auxiliar");
+			log.write("Preparando lista de rótulos do conjunto auxiliar:");
 			File rotulos = new File(dataset + "-aux.labels");
 			try {
+				log.write(" - Obtendo a relação nome da imagem/código IRMA do arquivo: " + csv);
+				File relacaoImagemCodigo = new File(csv);
+				Scanner leitor = new Scanner(relacaoImagemCodigo);
+				TreeMap<String,String> relacao = new TreeMap<String,String>();
+				while(leitor.hasNextLine()){
+					String[] campos = leitor.nextLine().split(";");
+					relacao.put(campos[0], campos[1]);
+							
+				}
+				leitor.close();
+				
+				log.write("- Criando arquivo xml com a estrutura de códigos IRMA");
+				XmlIrmaCodeBuilder xicb = new XmlIrmaCodeBuilder(txt, dataset);
+				if(xicb.hasXml()) log.write("- Arquivo xml com a estrutura de código IRMA criado com êxito");
+				
+				log.write("- Criando objeto que converte o código IRMA para binário e que necessita do xml criado anteriormente");
+				IrmaCode conversor = new IrmaCode(dataset);
+				
+				log.write("- Armazenado lista de rótulos em: " + rotulos.getPath());
 				FileWriter escritor = new FileWriter(rotulos);
 				for(String rotulo : rotulosAuxiliar){
-					escritor.write(rotulo + "\n");					
+					String nomeImagem = rotulo.split("\\.")[0];
+					nomeImagem = relacao.get(nomeImagem);
+					nomeImagem = conversor.toBinary(nomeImagem);
+					escritor.write(nomeImagem + "\n");					
 				}
 				escritor.close();
 			} catch (IOException e) {
 				log.write("- Falha ao salvar lista de rótulos do conjunto auxiliar: " + e.getMessage());
+				System.exit(0);
 			}
 			
 		}
@@ -137,6 +166,7 @@ public class Caracteristicas {
 				obtemPontosChave(datasetAux);
 			} catch(Exception e){
 				log.write("Falha ao criar conjunto auxiliar: " + e.getMessage());
+				System.exit(0);
 			}
 		}
 		
@@ -200,19 +230,8 @@ public class Caracteristicas {
 			
 		} catch(Exception e){
 			log.write("- Falha na construção do conjunto de amostras com características de histograma SIFT: " + e.fillInStackTrace());
+			System.exit(0);
 		}
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

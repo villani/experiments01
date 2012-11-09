@@ -22,6 +22,7 @@ public class Experiments01 {
 			init();
 		} catch(FileNotFoundException fnfe){
 			log.write("Falha ao receber as entradas do sistema: " + fnfe.getMessage());
+			System.exit(0);
 		}
 		
 		log.write("Entradas obtidas.");
