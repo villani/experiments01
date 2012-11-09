@@ -24,7 +24,7 @@ public class Amostras {
 			log.write("Obtendo novo conjunto de amostras: ");
 			Caracteristicas.setLog(log);
 			Caracteristicas.setEntradas(entradas);
-			Caracteristicas.obtemPontosChave();
+			Caracteristicas.obtemHistogramaSIFT();
 		}
 	}
 	

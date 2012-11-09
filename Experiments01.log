@@ -1,24 +1,39 @@
-Thu Nov 08 19:46:59 BRST 2012: LOG INITIALIZED
-Thu Nov 08 19:46:59 BRST 2012: Iniciando experimento 1.3:
-Thu Nov 08 19:46:59 BRST 2012: Obtendo as entradas do sistema a partir de conf.ini.
-Thu Nov 08 19:46:59 BRST 2012: Entradas obtidas.
-Thu Nov 08 19:46:59 BRST 2012: Lendo entradas:
-Thu Nov 08 19:46:59 BRST 2012: - Conjunto de amostras: med201211
-Thu Nov 08 19:46:59 BRST 2012: - Caminho da pasta de imagens: \IRMA\2009\ImageCLEFmed2009_train.02
-Thu Nov 08 19:46:59 BRST 2012: - Arquivo com a relação imagem/IRMA: ImageCLEFmed2009_train_codes.02
-Thu Nov 08 19:46:59 BRST 2012: - Arquivo estrutura código irma: 1345115140_export_eng
-Thu Nov 08 19:46:59 BRST 2012: - Quantidade de imagens que serão utilizadas: 5
-Thu Nov 08 19:46:59 BRST 2012: - Limite de pontos-chave obtidos: 100
-Thu Nov 08 19:46:59 BRST 2012: - Tamanho do histograma SIFT: 2000
-Thu Nov 08 19:46:59 BRST 2012: Obtendo conjunto de amostras:
-Thu Nov 08 19:46:59 BRST 2012: - O conjunto de amostras ainda não existe em: D:\Repositórios\experiments01\med201211.arff
-Thu Nov 08 19:46:59 BRST 2012: Obtendo novo conjunto de amostras: 
-Thu Nov 08 19:46:59 BRST 2012: - Pasta de imagens encontrada: D:\IRMA\2009\ImageCLEFmed2009_train.02
-Thu Nov 08 19:46:59 BRST 2012: - Obtendo imagens da pasta ImageCLEFmed2009_train.02
-Thu Nov 08 19:46:59 BRST 2012: Criando conjunto auxiliar:
-Thu Nov 08 19:46:59 BRST 2012: - Definindo lista de atributos
-Thu Nov 08 19:46:59 BRST 2012: - Criando um conjunto de instancias que armazenará as imagens
-Thu Nov 08 19:46:59 BRST 2012: - Criando ArffSaver para armazenar o conjunto auxiliar em arquivo
-Thu Nov 08 19:46:59 BRST 2012: - Obtendo os pontos-chave das imagens
-Thu Nov 08 19:46:59 BRST 2012: - Salvando em arquivo a lista de rótulos do conjunto auxiliar
-Thu Nov 08 19:46:59 BRST 2012: Fim do experimento
+Fri Nov 09 11:47:06 BRST 2012: LOG INITIALIZED
+Fri Nov 09 11:47:06 BRST 2012: Iniciando experimento 1.3:
+Fri Nov 09 11:47:06 BRST 2012: Obtendo as entradas do sistema a partir de conf.ini.
+Fri Nov 09 11:47:06 BRST 2012: Entradas obtidas.
+Fri Nov 09 11:47:06 BRST 2012: Lendo entradas:
+Fri Nov 09 11:47:06 BRST 2012: - Conjunto de amostras: med201211
+Fri Nov 09 11:47:06 BRST 2012: - Caminho da pasta de imagens: \IRMA\2009\ImageCLEFmed2009_train.02
+Fri Nov 09 11:47:06 BRST 2012: - Arquivo com a relação imagem/IRMA: ImageCLEFmed2009_train_codes.02
+Fri Nov 09 11:47:06 BRST 2012: - Arquivo estrutura código irma: 1345115140_export_eng
+Fri Nov 09 11:47:06 BRST 2012: - Quantidade de imagens que serão utilizadas: 5
+Fri Nov 09 11:47:06 BRST 2012: - Limite de pontos-chave obtidos: 10
+Fri Nov 09 11:47:06 BRST 2012: - Tamanho do histograma SIFT: 3
+Fri Nov 09 11:47:06 BRST 2012: Obtendo conjunto de amostras:
+Fri Nov 09 11:47:06 BRST 2012: - O conjunto de amostras ainda não existe em: D:\Repositórios\experiments01\med201211.arff
+Fri Nov 09 11:47:06 BRST 2012: Obtendo novo conjunto de amostras: 
+Fri Nov 09 11:47:06 BRST 2012: - O conjunto auxiliar não foi encontrado em: D:\Repositórios\experiments01\med201211-aux.arff
+Fri Nov 09 11:47:06 BRST 2012: Criando novo conjunto auxiliar:
+Fri Nov 09 11:47:06 BRST 2012: - Pasta de imagens encontrada: D:\IRMA\2009\ImageCLEFmed2009_train.02
+Fri Nov 09 11:47:06 BRST 2012: - Obtendo imagens da pasta ImageCLEFmed2009_train.02
+Fri Nov 09 11:47:06 BRST 2012: Criando conjunto auxiliar:
+Fri Nov 09 11:47:06 BRST 2012: - Definindo lista de atributos
+Fri Nov 09 11:47:06 BRST 2012: - Criando um conjunto de instancias que armazenará as imagens
+Fri Nov 09 11:47:06 BRST 2012: - Criando ArffSaver para armazenar o conjunto auxiliar em arquivo
+Fri Nov 09 11:47:06 BRST 2012: - Obtendo os pontos-chave das imagens
+Fri Nov 09 11:47:06 BRST 2012: - Salvando em arquivo a lista de rótulos do conjunto auxiliar
+Fri Nov 09 11:47:06 BRST 2012: Construindo conjunto de amostras com características de histograma SIFT:
+Fri Nov 09 11:47:06 BRST 2012: - Instanciando amostras do conjunto auxiliar
+Fri Nov 09 11:47:06 BRST 2012: - Agrupando amostras
+Fri Nov 09 11:47:06 BRST 2012: Construindo histograma SIFT:
+Fri Nov 09 11:47:06 BRST 2012: - Obtendo lista de rótulos do conjunto auxiliar
+Fri Nov 09 11:47:06 BRST 2012: - Calculando valor dos bins do histograma SIFT
+Fri Nov 09 11:47:06 BRST 2012: Criando conjunto de amostras com as características de histograma SIFT:
+Fri Nov 09 11:47:06 BRST 2012: - Definindo os atributos do conjunto
+Fri Nov 09 11:47:06 BRST 2012: - Criando o conjunto com a lista definida de atributos
+Fri Nov 09 11:47:06 BRST 2012: - Armazenando no conjunto as amostras com as características de histograma SIFT
+Fri Nov 09 11:47:06 BRST 2012: - Salvando o novo conjunto de amostras em: med201211.arff
+Fri Nov 09 11:47:06 BRST 2012: Fim do experimento
+Fri Nov 09 11:47:06 BRST 2012: LOG FINALIZED
+

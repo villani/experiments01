@@ -40,6 +40,7 @@ public class Experiments01 {
 		Amostras.obtem();
 		
 		log.write("Fim do experimento");
+		log.close();
 
 	}
 	
