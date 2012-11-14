@@ -9,5 +9,7 @@
 	<classpathentry kind="lib" path="D:/Repositórios/LogBuilder.jar"/>
 	<classpathentry kind="lib" path="D:/Repositórios/XmlIrmaCodeBuilder.jar"/>
 	<classpathentry kind="lib" path="D:/Repositórios/IrmaCode.jar"/>
+	<classpathentry kind="lib" path="D:/Repositórios/RelationBuilder.jar"/>
+	<classpathentry kind="lib" path="D:/Repositórios/mulan.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -24,7 +23,6 @@ import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 import weka.core.converters.ArffSaver;
-import weka.core.converters.ConverterUtils.DataSink;
 
 public class Caracteristicas {
 	
@@ -203,30 +201,35 @@ public class Caracteristicas {
 			}
 			
 			log.write("Criando conjunto de amostras com as características de histograma SIFT:");
-			log.write("- Definindo os atributos do conjunto");
-			ArrayList<Attribute> listaDeAtributos = new ArrayList<Attribute>();
-			for(int i = 0; i < histoSize;i++){
-				listaDeAtributos.add(new Attribute("histoSIFT" + i));
-			}
-			listaDeAtributos.add(new Attribute("id",(List<String>)null));
+			RelationBuilder instanciasSIFT = new RelationBuilder(dataset);
 			
-			log.write("- Criando o conjunto com a lista definida de atributos");
-			Instances instanciasSIFT = new Instances(dataset,listaDeAtributos,histoSIFT.size());
+			log.write("- Definindo os atributos do conjunto");
+			for(int i = 0; i < histoSize; i++){
+				instanciasSIFT.defineAttribute("histSIFT" + i, "numeric");
+			}
+			
+			log.write("- Salvando a lista de atributos e incluindo os rótulos a partir do xml informado no construtor");
+			instanciasSIFT.saveAttributes();
+			
 			log.write("- Armazenando no conjunto as amostras com as características de histograma SIFT");
-			for(String img : histoSIFT.keySet()){
+			for(String img : histoSIFT.keySet()){		
 				int[] histograma = histoSIFT.get(img);
-				Instance amostra = new DenseInstance(histoSize + 1);
-				amostra.setDataset(instanciasSIFT);
-				for(int i = 0; i < histoSize; i++){
-					amostra.setValue(i, histograma[i]);
+				String amostra = "";
+				
+				// armazena os valores do histograma
+				for(int i : histograma){
+					amostra += i + ",";
 				}
-				amostra.setValue(histoSize, img);
-				instanciasSIFT.add(amostra);
+				
+				// armazena conjunto de rótulos binário da amostra
+				amostra += img;
+				
+				// armazena a amostra no conjunto
+				instanciasSIFT.insertData(amostra);
 			}
 			
 			log.write("- Salvando o novo conjunto de amostras em: " + dataset + ".arff");
-			DataSink saver = new DataSink(dataset + ".arff");
-			saver.write(instanciasSIFT);
+			instanciasSIFT.saveRelation();
 			
 		} catch(Exception e){
 			log.write("- Falha na construção do conjunto de amostras com características de histograma SIFT: " + e.fillInStackTrace());
