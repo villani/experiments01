@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+import mulan.data.MultiLabelInstances;
+
 public class Experiments01 {
 	
 	private static LogBuilder log;
@@ -38,7 +40,12 @@ public class Experiments01 {
 		log.write("Obtendo conjunto de amostras:");
 		Amostras.setLog(log);
 		Amostras.setEntradas(entradas);
-		Amostras.obtem();
+		MultiLabelInstances instanciasML = Amostras.obtem();
+		
+		log.write("Avaliando classificadores: ");
+		Classificadores.setLog(log);
+		Classificadores.setEntradas(entradas);
+		Classificadores.avalia(instanciasML);
 		
 		log.write("Fim do experimento");
 		log.close();

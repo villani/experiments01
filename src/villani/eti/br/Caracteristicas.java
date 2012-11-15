@@ -15,6 +15,7 @@ import mpi.cbg.fly.Filter;
 import mpi.cbg.fly.FloatArray2D;
 import mpi.cbg.fly.FloatArray2DSIFT;
 import mpi.cbg.fly.ImageArrayConverter;
+import mulan.data.MultiLabelInstances;
 
 import weka.clusterers.SimpleKMeans;
 import weka.core.Attribute;
@@ -154,7 +155,7 @@ public class Caracteristicas {
 		 	
 	}
 
-	public static void obtemHistogramaSIFT(){
+	public static MultiLabelInstances obtemHistogramaSIFT(){
 		File datasetAux = new File(dataset + "-aux.arff");
 		if(datasetAux.exists()) log.write("- Conjunto auxiliar encontrado: " + datasetAux.getAbsolutePath());
 		else{
@@ -169,6 +170,8 @@ public class Caracteristicas {
 		}
 		
 		log.write("Construindo conjunto de amostras com características de histograma SIFT:");
+		MultiLabelInstances instanciasML = null;
+		
 		log.write("- Instanciando amostras do conjunto auxiliar");
 		ArffLoader carregador = new ArffLoader();
 		try {
@@ -229,12 +232,15 @@ public class Caracteristicas {
 			}
 			
 			log.write("- Salvando o novo conjunto de amostras em: " + dataset + ".arff");
-			instanciasSIFT.saveRelation();
+			 
+			instanciasML = instanciasSIFT.saveRelation();
 			
 		} catch(Exception e){
 			log.write("- Falha na construção do conjunto de amostras com características de histograma SIFT: " + e.fillInStackTrace());
 			System.exit(0);
 		}
+		
+		return instanciasML;
 		
 	}
 }
