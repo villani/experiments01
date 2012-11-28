@@ -9,6 +9,8 @@ public class Amostras {
 
 	private static LogBuilder log;
 	private static TreeMap<String, String> entradas;
+	private static String arff;
+	private static String xml;
 
 	public static void setLog(LogBuilder log) {
 		Amostras.log = log;
@@ -16,17 +18,19 @@ public class Amostras {
 
 	public static void setEntradas(TreeMap<String, String> entradas) {
 		Amostras.entradas = entradas;
+		arff = entradas.get("dataset") + ".arff";
+		xml = entradas.get("dataset") + ".xml";
 	}
 
 	public static MultiLabelInstances obtem() {
 		MultiLabelInstances instanciasML = null;
 		try {
-			File dataset = new File(entradas.get("dataset") + ".arff");
-			if (dataset.exists()) {
-				log.write("- Conjunto de amostras encontrado em: " + dataset.getAbsolutePath());
-				instanciasML = new MultiLabelInstances(dataset + ".arff", dataset + ".xml");
+			File arffFile = new File(arff);
+			if (arffFile.exists()) {
+				log.write("- Conjunto de amostras encontrado em: " + arffFile.getAbsolutePath());
+				instanciasML = new MultiLabelInstances(arff, xml);
 			} else {
-				log.write("- O conjunto de amostras ainda não existe em: " + dataset.getAbsolutePath());
+				log.write("- O conjunto de amostras ainda não existe em: " + arffFile.getAbsolutePath());
 				log.write("Obtendo novo conjunto de amostras: ");
 				Caracteristicas.setLog(log);
 				Caracteristicas.setEntradas(entradas);

@@ -14,6 +14,7 @@ public class Classificadores {
 	private static LogBuilder log;
 	private static TreeMap<String, String> entradas;
 	private static String dataset;
+	private static int folds;
 
 	public static void setLog(LogBuilder log) {
 		Classificadores.log = log;
@@ -22,6 +23,8 @@ public class Classificadores {
 	public static void setEntradas(TreeMap<String, String> entradas) {
 		Classificadores.entradas = entradas;
 		dataset = Classificadores.entradas.get("dataset");
+		folds = Integer.parseInt(Classificadores.entradas.get("folds"));
+		
 
 	}
 
@@ -36,7 +39,7 @@ public class Classificadores {
 
 		log.write("- Instanciando avaliador");
 		Evaluator avaliador = new Evaluator();
-		int numFolds = 10;
+		int numFolds = folds;
 
 		log.write("- Instanciando registradores dos resultados");
 		MultipleEvaluation avaliacao;
