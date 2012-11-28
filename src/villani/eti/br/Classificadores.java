@@ -46,15 +46,15 @@ public class Classificadores {
 			log.write("- Avaliando classificador " + classificador01.getClass());
 			avaliacao = avaliador.crossValidate(classificador01, instanciasML, numFolds);
 			resultados.write("RESULTADOS DO CLASSIFICADOR " + classificador01.getClass());
-			resultados.write("=========================================\n\n");
+			resultados.write("\n=========================================\n\n");
 			resultados.write(avaliacao.toString());
-			resultados.write("=========================================\n\n");
+			resultados.write("\n=========================================\n\n");
 			log.write("- Avaliando classificador " + classificador02.getClass());
 			avaliacao = avaliador.crossValidate(classificador02, instanciasML, numFolds);
 			resultados.write("RESULTADOS DO CLASSIFICADOR " + classificador02.getClass());
-			resultados.write("=========================================\n\n");
+			resultados.write("\n=========================================\n\n");
 			resultados.write(avaliacao.toString());
-			resultados.write("=========================================\n\n");
+			resultados.write("\n=========================================\n\n");
 			resultados.close();
 		} catch (Exception e) {
 			log.write("- Falha ao instancias registradores: " + e.getMessage());

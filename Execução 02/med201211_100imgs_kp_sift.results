@@ -1,0 +1,56 @@
+RESULTADOS DO CLASSIFICADOR class mulan.classifier.lazy.MLkNN
+=========================================
+
+Hamming Loss: 0,0031±0,0006
+Subset Accuracy: 0,0000±0,0000
+Example-Based Precision: 0,8545±0,0591
+Example-Based Recall: 0,6151±0,0472
+Example-Based F Measure: 0,7116±0,0500
+Example-Based Accuracy: 0,5721±0,0596
+Micro-averaged Precision: 0,8535±0,0576
+Micro-averaged Recall: 0,6079±0,0450
+Micro-averaged F-Measure: 0,7096±0,0477
+Macro-averaged Precision: NaN±NaN
+Macro-averaged Recall: NaN±NaN
+Macro-averaged F-Measure: NaN±NaN
+Average Precision: 0,8093±0,0330
+Coverage: 110,2300±79,0614
+OneError: 0,0000±0,0000
+IsError: 0,9600±0,0490
+ErrorSetSize: 177,5600±123,9973
+Ranking Loss: 0,0088±0,0060
+Mean Average Precision: NaN±NaN
+Micro-averaged AUC: 0,9900±0,0070
+Macro-averaged AUC: NaN±NaN
+Hierarchical Loss: 2,8600±0,6359
+
+=========================================
+
+RESULTADOS DO CLASSIFICADOR class mulan.classifier.lazy.BRkNN
+=========================================
+
+Hamming Loss: 0,0063±0,0003
+Subset Accuracy: 0,0000±0,0000
+Example-Based Precision: NaN±NaN
+Example-Based Recall: 0,0000±0,0000
+Example-Based F Measure: NaN±NaN
+Example-Based Accuracy: 0,0000±0,0000
+Micro-averaged Precision: NaN±NaN
+Micro-averaged Recall: 0,0000±0,0000
+Micro-averaged F-Measure: NaN±NaN
+Macro-averaged Precision: NaN±NaN
+Macro-averaged Recall: NaN±NaN
+Macro-averaged F-Measure: NaN±NaN
+Average Precision: 0,7800±0,0431
+Coverage: 365,3300±178,5616
+OneError: 0,0000±0,0000
+IsError: 0,9300±0,0781
+ErrorSetSize: 791,4500±387,0181
+Ranking Loss: 0,0402±0,0195
+Mean Average Precision: NaN±NaN
+Micro-averaged AUC: 0,9565±0,0208
+Macro-averaged AUC: NaN±NaN
+Hierarchical Loss: 3,6400±0,1685
+
+=========================================
+

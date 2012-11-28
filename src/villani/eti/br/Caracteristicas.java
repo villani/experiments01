@@ -16,7 +16,6 @@ import mpi.cbg.fly.FloatArray2D;
 import mpi.cbg.fly.FloatArray2DSIFT;
 import mpi.cbg.fly.ImageArrayConverter;
 import mulan.data.MultiLabelInstances;
-
 import weka.clusterers.SimpleKMeans;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
@@ -119,30 +118,10 @@ public class Caracteristicas {
 			log.write("Preparando lista de rótulos do conjunto auxiliar:");
 			File rotulos = new File(dataset + "-aux.labels");
 			try {
-				log.write(" - Obtendo a relação nome da imagem/código IRMA do arquivo: " + csv);
-				File relacaoImagemCodigo = new File(csv);
-				Scanner leitor = new Scanner(relacaoImagemCodigo);
-				TreeMap<String,String> relacao = new TreeMap<String,String>();
-				while(leitor.hasNextLine()){
-					String[] campos = leitor.nextLine().split(";");
-					relacao.put(campos[0], campos[1]);
-							
-				}
-				leitor.close();
-				
-				log.write("- Criando arquivo xml com a estrutura de códigos IRMA");
-				XmlIrmaCodeBuilder xicb = new XmlIrmaCodeBuilder(txt, dataset);
-				if(xicb.hasXml()) log.write("- Arquivo xml com a estrutura de código IRMA criado com êxito");
-				
-				log.write("- Criando objeto que converte o código IRMA para binário e que necessita do xml criado anteriormente");
-				IrmaCode conversor = new IrmaCode(dataset);
-				
 				log.write("- Armazenado lista de rótulos em: " + rotulos.getPath());
 				FileWriter escritor = new FileWriter(rotulos);
 				for(String rotulo : rotulosAuxiliar){
 					String nomeImagem = rotulo.split("\\.")[0];
-					nomeImagem = relacao.get(nomeImagem);
-					nomeImagem = conversor.toBinary(nomeImagem);
 					escritor.write(nomeImagem + "\n");					
 				}
 				escritor.close();
@@ -171,6 +150,31 @@ public class Caracteristicas {
 		
 		log.write("Construindo conjunto de amostras com características de histograma SIFT:");
 		MultiLabelInstances instanciasML = null;
+		
+		log.write(" - Obtendo a relação nome da imagem/código IRMA do arquivo: " + csv);
+		File relacaoImagemCodigo = new File(csv);
+		TreeMap<String,String> relacao = new TreeMap<String,String>();
+		XmlIrmaCodeBuilder xicb;
+		IrmaCode conversor = null;
+		try {
+			Scanner leitor01 = new Scanner(relacaoImagemCodigo);
+			while (leitor01.hasNextLine()) {
+				String[] campos = leitor01.nextLine().split(";");
+				relacao.put(campos[0], campos[1]);
+			}
+			leitor01.close();
+
+			log.write("- Criando arquivo xml com a estrutura de códigos IRMA");
+			xicb = new XmlIrmaCodeBuilder(txt, dataset);
+			if (xicb.hasXml())
+				log.write("- Arquivo xml com a estrutura de código IRMA criado com êxito");
+
+			log.write("- Criando objeto que converte o código IRMA para binário e que necessita do xml criado anteriormente");
+			conversor = new IrmaCode(dataset);
+		} catch (IOException e) {
+			log.write("- Falha ao obter relação nome da imagem/ código IRMA: " + e.getMessage());
+			System.exit(0);
+		}
 		
 		log.write("- Instanciando amostras do conjunto auxiliar");
 		ArffLoader carregador = new ArffLoader();
@@ -224,7 +228,9 @@ public class Caracteristicas {
 					amostra += i + ",";
 				}
 				
-				// armazena conjunto de rótulos binário da amostra
+				// armazena conjunto de rótulos binário da amostra	
+				img = relacao.get(img);
+				img = conversor.toBinary(img);
 				amostra += img;
 				
 				// armazena a amostra no conjunto
