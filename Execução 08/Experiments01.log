@@ -1,0 +1,25 @@
+Thu Dec 06 17:46:15 BRST 2012: LOG INITIALIZED
+Thu Dec 06 17:46:15 BRST 2012: Iniciando experimento 1.3:
+Thu Dec 06 17:46:15 BRST 2012: Obtendo as entradas do sistema a partir de conf.ini.
+Thu Dec 06 17:46:15 BRST 2012: Entradas obtidas.
+Thu Dec 06 17:46:15 BRST 2012: Lendo entradas:
+Thu Dec 06 17:46:15 BRST 2012: - Conjunto de amostras: med201211_2000imgs_100kp_100sift
+Thu Dec 06 17:46:15 BRST 2012: - Caminho da pasta de imagens: /home/villani/Documentos/ImageCLEFmed2009_train.02
+Thu Dec 06 17:46:15 BRST 2012: - Arquivo com a rela��o imagem/IRMA: /home/villani/Documentos/ImageCLEFmed2009_train_codes.02.csv
+Thu Dec 06 17:46:15 BRST 2012: - Arquivo estrutura c�digo irma: 1345115140_export_eng.txt
+Thu Dec 06 17:46:15 BRST 2012: - Quantidade de imagens que ser�o utilizadas: 2000
+Thu Dec 06 17:46:15 BRST 2012: - Limite de pontos-chave obtidos: 100
+Thu Dec 06 17:46:15 BRST 2012: - Tamanho do histograma SIFT: 100
+Thu Dec 06 17:46:15 BRST 2012: Obtendo conjunto de amostras:
+Thu Dec 06 17:46:15 BRST 2012: - Conjunto de amostras encontrado em: med201211_2000imgs_100kp_100sift.arff
+Thu Dec 06 17:46:15 BRST 2012: - Arquivo xml encontrado em: med201211_2000imgs_100kp_100sift.xml
+Thu Dec 06 17:46:18 BRST 2012: Avaliando classificadores: 
+Thu Dec 06 17:46:18 BRST 2012: - Instanciando avaliador
+Thu Dec 06 17:46:18 BRST 2012: - Instanciando registradores dos resultados
+Thu Dec 06 17:46:18 BRST 2012: - Instanciando MLkNN
+Thu Dec 06 17:46:18 BRST 2012: - Avaliando classificador class mulan.classifier.lazy.MLkNN
+Thu Dec 06 17:49:48 BRST 2012: - Instanciando BRkNN
+Thu Dec 06 17:49:48 BRST 2012: - Avaliando classificador class mulan.classifier.lazy.BRkNN
+Thu Dec 06 17:51:07 BRST 2012: Fim do experimento
+Thu Dec 06 17:51:07 BRST 2012: LOG FINALIZED
+
