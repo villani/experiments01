@@ -1,0 +1,29 @@
+Fri Dec 07 11:47:49 BRST 2012: LOG INITIALIZED
+Fri Dec 07 11:47:49 BRST 2012: Iniciando experimento 1.3:
+Fri Dec 07 11:47:49 BRST 2012: Obtendo as entradas do sistema a partir de conf.ini.
+Fri Dec 07 11:47:49 BRST 2012: Entradas obtidas.
+Fri Dec 07 11:47:49 BRST 2012: Lendo entradas:
+Fri Dec 07 11:47:49 BRST 2012: - Conjunto de amostras: med201211_3000imgs_100kp_100sift
+Fri Dec 07 11:47:49 BRST 2012: - Caminho da pasta de imagens: /home/villani/Documentos/ImageCLEFmed2009_train.02
+Fri Dec 07 11:47:49 BRST 2012: - Arquivo com a rela��o imagem/IRMA: /home/villani/Documentos/ImageCLEFmed2009_train_codes.02.csv
+Fri Dec 07 11:47:49 BRST 2012: - Arquivo estrutura c�digo irma: 1345115140_export_eng.txt
+Fri Dec 07 11:47:49 BRST 2012: - Quantidade de imagens que ser�o utilizadas: 3000
+Fri Dec 07 11:47:49 BRST 2012: - Limite de pontos-chave obtidos: 100
+Fri Dec 07 11:47:49 BRST 2012: - Tamanho do histograma SIFT: 100
+Fri Dec 07 11:47:49 BRST 2012: Obtendo conjunto de amostras:
+Fri Dec 07 11:47:49 BRST 2012: - Conjunto de amostras encontrado em: med201211_3000imgs_100kp_100sift.arff
+Fri Dec 07 11:47:49 BRST 2012: - Arquivo xml encontrado em: med201211_3000imgs_100kp_100sift.xml
+Fri Dec 07 11:47:53 BRST 2012: Avaliando classificadores: 
+Fri Dec 07 11:47:53 BRST 2012: - Instanciando classificador 01
+Fri Dec 07 11:47:53 BRST 2012: - Avaliando classificador class mulan.classifier.lazy.MLkNN
+Fri Dec 07 11:47:53 BRST 2012: - Instanciando avaliador
+Fri Dec 07 12:27:09 BRST 2012: - Falha ao avaliar o classificador 01: -1
+Fri Dec 07 12:27:09 BRST 2012: - Instanciando classificador 02
+Fri Dec 07 12:27:09 BRST 2012: - Avaliando classificador class mulan.classifier.lazy.BRkNN
+Fri Dec 07 12:27:09 BRST 2012: - Instanciando avaliador
+Fri Dec 07 12:58:06 BRST 2012: - Falha ao avaliar o classificador 02: -1
+Fri Dec 07 12:58:06 BRST 2012: Fim do experimento
+Fri Dec 07 12:58:06 BRST 2012: LOG FINALIZED
+
+Nessa execução, ao invés de 10 partições, foram utilizadas 20 partições para validação cruzada. Assim como no primeiro cenário, não havia memória para avaliar a última partição.
+
